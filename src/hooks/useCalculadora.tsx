@@ -7,6 +7,7 @@ enum Operadores {
 
 export const useCalculadora = () => {    
     
+  const [resultadoHistorico, setResultadoHistorico] = useState('0')
   const [numeroAnterior, setNumeroAnterior] = useState('0')
   const [numero, setNumero] = useState('0')
 
@@ -16,6 +17,7 @@ export const useCalculadora = () => {
   const limpiar = () => {
     setNumero('0')
     setNumeroAnterior('0')
+    setResultadoHistorico('0')
   }
 
   const armarNumero = (numeroTexto: string) => {
@@ -117,28 +119,37 @@ export const useCalculadora = () => {
 
     switch (ultimaOperacion.current) {
       case Operadores.sumar:
-        setNumero(`${numero1 + numero2}`)
+        const suma = `${numero1 + numero2}`
+        setNumero(suma)
+        setResultadoHistorico(numero2 + " + " + numero1 + " = " + suma)
         break;
 
       case Operadores.restar:
-        setNumero(`${numero2 - numero1}`)
+        const resta = `${numero2 - numero1}`
+        setNumero(resta)
+        setResultadoHistorico(numero2 + " - " + numero1 + " = " + resta)
         break;
 
       case Operadores.multiplicar:
-        setNumero(`${numero1 * numero2}`)
+        const multiplicacion = `${numero1 * numero2}`
+        setNumero(multiplicacion)
+        setResultadoHistorico(numero2 + " * " + numero1 + " = " + multiplicacion)
         break;
 
       case Operadores.dividir:
         if(numero1 === 0) break
-        setNumero(`${numero2 / numero1}`)
+
+        const division = `${numero2 / numero1}`        
+        setNumero(division)
+        setResultadoHistorico(numero2 + " / " + numero1 + " = " + division)
         break;
     }
-
     setNumeroAnterior('0')
   }
 
   // lo que retorna el hook: funciones, métodos, etc...
   return {
+    resultadoHistorico,
     numeroAnterior,
     numero,
     limpiar,

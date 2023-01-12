@@ -7,6 +7,7 @@ export const CalculadoraScreen = () => {
 
   // importación del hook
   const {
+    resultadoHistorico,
     numeroAnterior,
     numero,
     limpiar,
@@ -23,6 +24,11 @@ export const CalculadoraScreen = () => {
   return (
     <View style={styles.calculadoraContainer}>
 
+      {/* borrar cero resultado chico */}
+      {
+        (resultadoHistorico !== '0') &&
+        (<Text style={styles.resultadoChico}> {resultadoHistorico} </Text>)
+      }
       {/* borrar cero resultado chico */}
       {
         (numeroAnterior !== '0') &&

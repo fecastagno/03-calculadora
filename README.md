@@ -1,4 +1,4 @@
-# Clon de Calculadora de iOS
+# Clon de Calculadora
 
 Mobile App realizada con TypeScript en el curso: \
 React Native: Aplicaciones nativas para IOS y Android de Fernando Herrera.\
